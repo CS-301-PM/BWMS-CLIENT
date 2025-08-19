@@ -53,7 +53,7 @@ type WarehouseStaffPage =
 
 export default function MainApp() {
   // Make role modifiable for testing
-  const [currentRole, setCurrentRole] = useState<UserRole>("manager");
+  const [currentRole, setCurrentRole] = useState<UserRole>("admin");
 
   // Admin state
   const [adminActivePage, setAdminActivePage] =
