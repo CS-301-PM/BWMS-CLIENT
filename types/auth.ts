@@ -1,35 +1,50 @@
-export interface User {
-  id: string
-  username: string
-  role: "admin" | "manager" | "staff-central" | "staff-department" | "supplier"
-  firstName: string
-  lastName: string
-  email: string
-  employeeId?: string
-  department?: string
+export type UserRole =
+  | "admin"
+  | "manager"
+  | "staff_central_store"
+  | "staff_department"
+  | "supplier";
+
+export interface FetchedUser {
+  id?: string;
+  role: UserRole;
+  firstName: string;
+  lastName: string;
+  email: string;
+  employeeId: string;
+  department: string;
+  blockchainId: string;
+  status?: "active" | "inactive";
 }
 
-export interface AuthContextType {
-  user: User | null
-  login: (credentials: { username: string; password: string }) => Promise<void>
-  register: (userData: any) => Promise<void>
-  logout: () => void
-  loading: boolean
-  error: string | null
-}
+export type AuthUserState = {
+  user: FetchedUser | null;
+  users: FetchedUser[] | null;
+  departments: string[] | null;
+  hasAdmin: boolean;
+};
 
-export interface LoginCredentials {
-  username: string
-  password: string
-}
+export type UserSignIn = {
+  employeeId: string;
+  email: string;
+};
 
-export interface RegisterData {
-  firstName: string
-  middleName?: string
-  lastName: string
-  dateOfBirth: string
-  email: string
-  nrc: string
-  employeeId: string
-  role: string
-}
+export type UserSignUp = {} & UserSignIn & {
+    firstName: string;
+    lastName: string;
+    role: UserRole;
+  };
+
+type ErrorBody = {
+  message: string;
+  type: string;
+  value: string;
+};
+
+export type ErrorResponse = {
+  errors: {
+    [
+      key: string | "employeeId" | "firstName" | "lastName" | "email" | "role"
+    ]: ErrorBody;
+  };
+};

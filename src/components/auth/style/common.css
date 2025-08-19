@@ -1,0 +1,97 @@
+.authComps {
+  background: #f4f4f4;
+  display: grid;
+  height: 100vh;
+}
+
+.authForms {
+  display: grid;
+  padding: 0rem 2rem;
+}
+
+.authFormBody {
+  grid-gap: 0.5rem;
+}
+
+.eachInputField {
+  display: grid;
+  width: 100%;
+}
+
+.eachInputErrorMessageBox {
+  height: 0.8rem;
+  padding: 2pt;
+}
+
+/* Mobile Devices (portrait and landscape) up to 767px */
+@media only screen and (max-width: 567px) {
+  .authComps {
+    display: grid;
+  }
+  .authImage {
+    display: none;
+  }
+  .authForms {
+    display: block;
+    display: block;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+  }
+  .authFormBody {
+    width: 100%;
+  }
+}
+
+/* Tablets and Min Laptops 768px */
+@media only screen and (min-width: 568px) {
+  .authComps {
+    display: grid;
+    grid-template-columns: 50% 1fr;
+  }
+  .authImage {
+    display: block;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+  }
+  .authForms {
+    display: block;
+    display: block;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+  }
+  .authFormBody {
+    width: 100%;
+  }
+}
+
+/* Desktops and larger screens 1340px*/
+@media only screen and (min-width: 840px) {
+  .authComps {
+    display: grid;
+    grid-template-columns: 50% 1fr;
+  }
+  .authImage {
+    display: block;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+  }
+  .authForms {
+    display: block;
+    display: block;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+  }
+  .authFormBody {
+    width: 90%;
+  }
+}
