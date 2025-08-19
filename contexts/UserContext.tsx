@@ -17,6 +17,64 @@ const initialAuthUserState: AuthUserState = {
   departments: null,
 };
 
+const users: FetchedUser[] = [
+  {
+    id: "1",
+    employeeId: "UC0000001",
+    firstName: "John",
+    lastName: "Doe",
+    email: "john.doe@company.com",
+    role: "admin",
+    department: "IT",
+    blockchainId: "bc-101",
+    status: "active",
+  },
+  {
+    id: "2",
+    employeeId: "UC0000002",
+    firstName: "Alice",
+    lastName: "Smith",
+    email: "alice.smith@company.com",
+    role: "manager",
+    department: "Finance",
+    blockchainId: "bc-102",
+    status: "active",
+  },
+  {
+    id: "3",
+    employeeId: "UC0000003",
+    firstName: "Michael",
+    lastName: "Brown",
+    email: "michael.brown@company.com",
+    role: "supplier",
+    department: "Operations",
+    blockchainId: "bc-103",
+    status: "active",
+  },
+  {
+    id: "4",
+    employeeId: "UC0000004",
+    firstName: "Sophia",
+    lastName: "Johnson",
+    email: "sophia.johnson@company.com",
+    role: "staff_central_store",
+    department: "HR",
+    blockchainId: "bc-104",
+    status: "inactive",
+  },
+  {
+    id: "5",
+    employeeId: "UC0000005",
+    firstName: "David",
+    lastName: "Lee",
+    email: "david.lee@company.com",
+    role: "manager",
+    department: "Logistics",
+    blockchainId: "bc-105",
+    status: "active",
+  },
+];
+
 export const UserContextProvider = ({ children }: { children: ReactNode }) => {
   const [state, dispatch] = useReducer(userReducer, initialAuthUserState);
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -137,63 +195,6 @@ export const UserContextProvider = ({ children }: { children: ReactNode }) => {
 
     setError(null);
     // const users: FetchedUser[] = await response.json();
-    const users: FetchedUser[] = [
-      {
-        id: "1",
-        employeeId: "UC0000001",
-        firstName: "John",
-        lastName: "Doe",
-        email: "john.doe@company.com",
-        role: "admin",
-        department: "IT",
-        blockchainId: "bc-101",
-        status: "active",
-      },
-      {
-        id: "2",
-        employeeId: "UC0000002",
-        firstName: "Alice",
-        lastName: "Smith",
-        email: "alice.smith@company.com",
-        role: "manager",
-        department: "Finance",
-        blockchainId: "bc-102",
-        status: "active",
-      },
-      {
-        id: "3",
-        employeeId: "UC0000003",
-        firstName: "Michael",
-        lastName: "Brown",
-        email: "michael.brown@company.com",
-        role: "supplier",
-        department: "Operations",
-        blockchainId: "bc-103",
-        status: "active",
-      },
-      {
-        id: "4",
-        employeeId: "UC0000004",
-        firstName: "Sophia",
-        lastName: "Johnson",
-        email: "sophia.johnson@company.com",
-        role: "staff_central_store",
-        department: "HR",
-        blockchainId: "bc-104",
-        status: "inactive",
-      },
-      {
-        id: "5",
-        employeeId: "UC0000005",
-        firstName: "David",
-        lastName: "Lee",
-        email: "david.lee@company.com",
-        role: "manager",
-        department: "Logistics",
-        blockchainId: "bc-105",
-        status: "active",
-      },
-    ];
 
     dispatch({ type: "GET_ALL_USERS", payload: users });
     setIsLoading(false);
