@@ -6,14 +6,14 @@ import { useUserContext } from "../../../hooks/UserContextHook";
 function LoginForm() {
   const { signIn, isLoading } = useUserContext();
 
-  const [ssn, setSsn] = useState<string>("");
+  const [employeeId, setEmployeeId] = useState<string>("");
   const [password, setPassword] = useState<string>("");
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { id, value } = event.target;
     switch (id) {
-      case "ssn":
-        setSsn(value);
+      case "employeeId":
+        setEmployeeId(value);
         break;
       case "password":
         setPassword(value);
@@ -25,8 +25,8 @@ function LoginForm() {
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
-    // alert(`SSN: ${ssn}, Password: ${password}`);
-    signIn({ socialSecurityNumber: ssn, password });
+    // alert(`Employee ID: ${employeeId}, Password: ${password}`);
+    signIn({ employeeId, password } as any);
     // if (user?.user) {
     //   navigate("/to some page");
     // }
@@ -34,7 +34,9 @@ function LoginForm() {
 
   return (
     <div className="authComps">
-      <div className="authImage">Image</div>
+      <div className="authImage">
+        <i className="authIcons bi-shield-lock-fill"></i>
+      </div>
       <form className="authForms" autoComplete="off" onSubmit={handleSubmit}>
         <div className="authFormBody">
           <div className="authFormHeader">
@@ -44,17 +46,20 @@ function LoginForm() {
           <div className="eachInputField mb-1">
             <div className="form-floating">
               <input
-                name="ssn"
+                name="employeeId"
                 type="number"
                 className="form-control"
-                id="ssn"
-                value={ssn}
+                id="employeeId"
+                value={employeeId}
                 onChange={handleChange}
-                placeholder="ssn"
+                placeholder="employeeId"
               />
-              <label htmlFor="ssn">SSN</label>
+              <label htmlFor="employeeId">Employee ID</label>
             </div>
-            <div id="ssnError" className="eachInputErrorMessageBox"></div>
+            <div
+              id="employeeIdError"
+              className="eachInputErrorMessageBox"
+            ></div>
           </div>
 
           <div className="eachInputField mb-1">

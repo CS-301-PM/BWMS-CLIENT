@@ -99,7 +99,7 @@ export const UserContextProvider = ({ children }: { children: ReactNode }) => {
             email: "john.doe@example.com",
             employeeId: "12345678",
             department: "registry",
-            role: "admin",
+            role: "staff_central_store",
             blockchainId: "0x1234567890abcdef",
           },
         });

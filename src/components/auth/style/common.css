@@ -23,6 +23,12 @@
   padding: 2pt;
 }
 
+.authIcons {
+  font-size: 8rem;
+}
+.authFormHeader {
+  font-size: 2rem;
+}
 /* Mobile Devices (portrait and landscape) up to 767px */
 @media only screen and (max-width: 567px) {
   .authComps {

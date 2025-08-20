@@ -4,11 +4,12 @@ import "./style/UserRegistartion.css";
 import { useUserContext } from "../../../hooks/UserContextHook";
 
 function UserRegistration() {
-  const { user, signUp, isLoading, error } = useUserContext();
+  const { user, signUp, isLoading } = useUserContext();
 
   // const [phone, setPhone] = useState<string>("");
-  const [fullname, setFullname] = useState<string>("");
-  const [ssn, setSsn] = useState<string>("");
+  const [firstname, setFirstname] = useState<string>("");
+  const [lastname, setLastname] = useState<string>("");
+  const [employeeId, setEmployeeId] = useState<string>("");
   const [role, setRole] = useState<string>("");
   const [department, setDepartment] = useState<string>("");
   const [password, setPassword] = useState<string>("");
@@ -16,9 +17,10 @@ function UserRegistration() {
 
   const [hasAdminAccess, setHasAdminAccess] = useState<boolean>(false);
   const rawNewUserData = {
-    fullname,
-    socialSecurityNumber: ssn,
-    role,
+    firstname,
+    lastname,
+    employeeId,
+    role: "admin",
     department,
     password,
     confirmPassword,
@@ -33,11 +35,14 @@ function UserRegistration() {
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { id, value } = event.target;
     switch (id) {
-      case "fullname":
-        setFullname(value);
+      case "firstname":
+        setFirstname(value);
         break;
-      case "ssn":
-        setSsn(value);
+      case "lastname":
+        setLastname(value);
+        break;
+      case "employeeId":
+        setEmployeeId(value);
         break;
       case "role":
         setRole(value);
@@ -61,12 +66,14 @@ function UserRegistration() {
     // alert(
     //   `Fullname: ${fullname}, SSN: ${ssn}, Role: ${role}, Department: ${department}, Password: ${password}, Confirm Password: ${confirmPassword}`
     // );
-    signUp({ ...rawNewUserData });
+    signUp({ ...rawNewUserData } as any);
   };
 
   return (
     <div className="authComps">
-      <div className="authImage">Image</div>
+      <div className="authImage">
+        <i className="authIcons bi-person-plus-fill"></i>
+      </div>
       <form className="authForms" autoComplete="off" onSubmit={handleSubmit}>
         <div className="authFormBody">
           <div className="authFormHeader">
@@ -76,33 +83,52 @@ function UserRegistration() {
           <div className="eachInputField mb-1">
             <div className="form-floating">
               <input
-                name="fullname"
+                name="firstname"
                 type="text"
                 className="form-control"
-                id="fullname"
-                value={fullname}
+                id="firstname"
+                value={firstname}
                 onChange={handleChange}
-                placeholder="fullname"
+                placeholder="firstname"
               />
-              <label htmlFor="fullname">Fullname</label>
+              <label htmlFor="firstname">Firstname</label>
             </div>
-            <div id="fullnameError" className="eachInputErrorMessageBox"></div>
+            <div id="firstnameError" className="eachInputErrorMessageBox"></div>
           </div>
 
           <div className="eachInputField mb-1">
             <div className="form-floating">
               <input
-                name="ssn"
+                name="lastname"
+                type="text"
+                className="form-control"
+                id="lastname"
+                value={lastname}
+                onChange={handleChange}
+                placeholder="lastname"
+              />
+              <label htmlFor="lastname">Lastname</label>
+            </div>
+            <div id="lastnameError" className="eachInputErrorMessageBox"></div>
+          </div>
+
+          <div className="eachInputField mb-1">
+            <div className="form-floating">
+              <input
+                name="employeeId"
                 type="number"
                 className="form-control"
-                id="ssn"
-                value={ssn}
+                id="employeeId"
+                value={employeeId}
                 onChange={handleChange}
-                placeholder="ssn"
+                placeholder="employeeId"
               />
-              <label htmlFor="ssn">SSN</label>
+              <label htmlFor="employeeId">Employee ID</label>
             </div>
-            <div id="ssnError" className="eachInputErrorMessageBox"></div>
+            <div
+              id="employeeIdError"
+              className="eachInputErrorMessageBox"
+            ></div>
           </div>
 
           {/* ROLE */}
@@ -117,14 +143,15 @@ function UserRegistration() {
                 aria-label="Floating label select example"
               >
                 <option value="">Select role</option>
-                {hasAdminAccess && <option value="admin">Admin</option>}
+                <option value="admin">Admin</option>
+                {/* {hasAdminAccess && <option value="admin">Admin</option>}
                 {!hasAdminAccess && (
                   <>
                     <option value="manager">Manager</option>
                     <option value="operator">Operator</option>
                     <option value="department">Department</option>
                   </>
-                )}
+                )} */}
               </select>
               <label htmlFor="role">Role</label>
             </div>
