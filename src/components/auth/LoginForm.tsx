@@ -1,89 +1,68 @@
-import { useState } from "react";
-import "./style/common.css";
-import "./style/UserRegistartion.css";
-import { useUserContext } from "../../../hooks/UserContextHook";
+import React from 'react'
+import { useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { z } from 'zod'
+import { Button } from '../ui/button'
+import { Input } from '../ui/input'
+import { Label } from '../ui/label'
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../ui/card'
 
-function LoginForm() {
-  const { signIn, isLoading } = useUserContext();
+const loginSchema = z.object({
+  username: z.string().min(1, 'Username is required'),
+  password: z.string().min(1, 'Password is required'),
+})
 
-  const [ssn, setSsn] = useState<string>("");
-  const [password, setPassword] = useState<string>("");
+type LoginFormData = z.infer<typeof loginSchema>
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const { id, value } = event.target;
-    switch (id) {
-      case "ssn":
-        setSsn(value);
-        break;
-      case "password":
-        setPassword(value);
-        break;
-      default:
-        break;
-    }
-  };
-
-  const handleSubmit = async (event: React.FormEvent) => {
-    event.preventDefault();
-    // alert(`SSN: ${ssn}, Password: ${password}`);
-    signIn({ socialSecurityNumber: ssn, password });
-    // if (user?.user) {
-    //   navigate("/to some page");
-    // }
-  };
-
-  return (
-    <div className="authComps">
-      <div className="authImage">Image</div>
-      <form className="authForms" autoComplete="off" onSubmit={handleSubmit}>
-        <div className="authFormBody">
-          <div className="authFormHeader">
-            <h3>Login</h3>
-          </div>
-
-          <div className="eachInputField mb-1">
-            <div className="form-floating">
-              <input
-                name="ssn"
-                type="number"
-                className="form-control"
-                id="ssn"
-                value={ssn}
-                onChange={handleChange}
-                placeholder="ssn"
-              />
-              <label htmlFor="ssn">SSN</label>
-            </div>
-            <div id="ssnError" className="eachInputErrorMessageBox"></div>
-          </div>
-
-          <div className="eachInputField mb-1">
-            <div className="form-floating">
-              <input
-                name="password"
-                type="password"
-                className="form-control"
-                id="password"
-                value={password}
-                onChange={handleChange}
-                placeholder="password"
-              />
-              <label htmlFor="password">Password</label>
-            </div>
-            <div id="passwordError" className="eachInputErrorMessageBox"></div>
-          </div>
-
-          <input
-            type="submit"
-            value="Login"
-            className="btn btn-secondary btn-sm authSubmitForm"
-            disabled={isLoading}
-          />
-        </div>
-        <div className="authFormFooter"></div>
-      </form>
-    </div>
-  );
+interface LoginFormProps {
+  onSubmit: (data: LoginFormData) => void
+  isLoading: boolean
 }
 
-export default LoginForm;
+const LoginForm: React.FC<LoginFormProps> = ({ onSubmit, isLoading }) => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<LoginFormData>({
+    resolver: zodResolver(loginSchema),
+  })
+
+  return (
+    <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+      <div className="space-y-2">
+        <Label htmlFor="username">Username</Label>
+        <Input
+          id="username"
+          type="text"
+          placeholder="Enter your username"
+          {...register('username')}
+          disabled={isLoading}
+        />
+        {errors.username && (
+          <p className="text-sm text-destructive">{errors.username.message}</p>
+        )}
+      </div>
+
+      <div className="space-y-2">
+        <Label htmlFor="password">Password</Label>
+        <Input
+          id="password"
+          type="password"
+          placeholder="Enter your password"
+          {...register('password')}
+          disabled={isLoading}
+        />
+        {errors.password && (
+          <p className="text-sm text-destructive">{errors.password.message}</p>
+        )}
+      </div>
+
+      <Button type="submit" className="w-full" disabled={isLoading}>
+        {isLoading ? 'Signing in...' : 'Sign in'}
+      </Button>
+    </form>
+  )
+}
+
+export default LoginForm

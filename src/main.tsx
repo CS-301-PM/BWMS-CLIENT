@@ -1,13 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { UserContextProvider } from "../contexts/UserContext.tsx";
 import App from "./App";
-import "./index.css";
+import { ErrorBoundary } from "@/components/common/ErrorBoundary";
+
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
-  <React.StrictMode>
-    <UserContextProvider>
-      <App />
-    </UserContextProvider>
-  </React.StrictMode>
+<React.StrictMode>
+<ErrorBoundary>
+<App />
+</ErrorBoundary>
+</React.StrictMode>
 );
