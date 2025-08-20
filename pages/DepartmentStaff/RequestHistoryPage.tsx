@@ -55,7 +55,7 @@ interface StockRequest {
 }
 
 const RequestHistoryPage: React.FC = () => {
-	const [requests, setRequests] = useState<StockRequest[]>([
+	const [requests] = useState<StockRequest[]>([
 		{
 			id: "1",
 			requestId: "REQ-2024-001",
@@ -352,8 +352,7 @@ const RequestHistoryPage: React.FC = () => {
 										</td>
 										<td className="p-3">
 											<Button
-												size="sm"
-												variant="outline"
+												className="px-3 py-1 text-sm border border-gray-300"
 												onClick={() => {
 													setSelectedRequest(request);
 													setIsViewDialogOpen(true);
@@ -526,7 +525,7 @@ const RequestHistoryPage: React.FC = () => {
 
 							<div className="flex justify-end">
 								<Button
-									variant="outline"
+									className="border border-gray-300 bg-white text-gray-800 hover:bg-gray-100"
 									onClick={() => setIsViewDialogOpen(false)}
 								>
 									Close

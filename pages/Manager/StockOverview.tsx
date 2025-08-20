@@ -385,8 +385,7 @@ const StockOverview: React.FC = () => {
 										<td className="p-3">
 											<div className="flex items-center space-x-2">
 												<Button
-													size="sm"
-													variant="outline"
+													
 													onClick={() => {
 														setSelectedItem(item);
 														setIsEditDialogOpen(true);
@@ -395,8 +394,8 @@ const StockOverview: React.FC = () => {
 													<Edit className="h-3 w-3" />
 												</Button>
 												<Button
-													size="sm"
-													variant="outline"
+													
+													
 													onClick={() => handleDeleteStock(item.id)}
 													className="text-red-600 hover:text-red-700"
 												>
@@ -524,7 +523,7 @@ const StockOverview: React.FC = () => {
 							</div>
 							<div className="flex justify-end space-x-2">
 								<Button
-									variant="outline"
+									
 									onClick={() => setIsEditDialogOpen(false)}
 								>
 									Cancel

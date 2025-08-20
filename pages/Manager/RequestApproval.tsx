@@ -376,8 +376,9 @@ const RequestApproval: React.FC = () => {
 										<td className="p-3">
 											<div className="flex items-center space-x-2">
 												<Button
-													size="sm"
-													variant="outline"
+													
+													className="text-blue-600 hover:text-blue-700 bg-transparent"
+													
 													onClick={() => {
 														setSelectedRequest(request);
 														setIsViewDialogOpen(true);
@@ -388,14 +389,14 @@ const RequestApproval: React.FC = () => {
 												{request.status === "pending" && (
 													<>
 														<Button
-															size="sm"
+															
 															className="bg-green-600 hover:bg-green-700 text-white"
 															onClick={() => handleApproveRequest(request.id)}
 														>
 															<CheckCircle className="h-3 w-3" />
 														</Button>
 														<Button
-															size="sm"
+															
 															className="bg-red-600 hover:bg-red-700 text-white"
 															onClick={() => handleRejectRequest(request.id)}
 														>
@@ -521,7 +522,7 @@ const RequestApproval: React.FC = () => {
 
 							<div className="flex justify-end space-x-2">
 								<Button
-									variant="outline"
+									
 									onClick={() => setIsViewDialogOpen(false)}
 								>
 									Close

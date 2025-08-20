@@ -356,3 +356,7 @@ const StockAlertUpdatePage: React.FC = () => {
 };
 
 export default StockAlertUpdatePage;
+
+function setSelectedItem(item: StockItem) {
+	throw new Error("Function not implemented.");
+}

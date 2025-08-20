@@ -94,7 +94,7 @@ export default function RequestManagement() {
 		<div className="p-6 space-y-6">
 			<div className="flex justify-between items-center">
 				<h1 className="text-2xl font-bold">Request Management</h1>
-				<Button size="sm">Generate Report</Button>
+				<Button>Generate Report</Button>
 			</div>
 
 			<Tabs defaultValue="all" className="space-y-4">
@@ -131,7 +131,7 @@ export default function RequestManagement() {
 									<option value="Approved">Approved</option>
 									<option value="Rejected">Rejected</option>
 								</select>
-								<Button variant="outline" size="sm">
+								<Button  >
 									<Filter className="h-4 w-4 mr-2" />
 									Filter
 								</Button>
@@ -189,21 +189,21 @@ export default function RequestManagement() {
 												</td>
 												<td className="p-3">
 													<div className="flex space-x-1">
-														<Button variant="ghost" size="sm">
+														<Button >
 															<Eye className="h-4 w-4" />
 														</Button>
 														{request.status === "Pending" && (
 															<>
 																<Button
-																	variant="ghost"
-																	size="sm"
+																	
+																	
 																	className="text-green-600 hover:text-green-700"
 																>
 																	<CheckCircle className="h-4 w-4" />
 																</Button>
 																<Button
-																	variant="ghost"
-																	size="sm"
+																	
+																	
 																	className="text-red-600 hover:text-red-700"
 																>
 																	<XCircle className="h-4 w-4" />
@@ -252,15 +252,15 @@ export default function RequestManagement() {
 												</Badge>
 												<div className="flex space-x-1">
 													<Button
-														size="sm"
+														
 														className="text-green-600 hover:text-green-700"
 													>
 														<CheckCircle className="h-4 w-4 mr-1" />
 														Approve
 													</Button>
 													<Button
-														size="sm"
-														variant="outline"
+														
+														
 														className="text-red-600 hover:text-red-700 bg-transparent"
 													>
 														<XCircle className="h-4 w-4 mr-1" />

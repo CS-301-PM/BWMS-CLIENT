@@ -2,17 +2,17 @@
 
 import type React from "react";
 import { useState } from "react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
+import { Card, CardContent, CardHeader, CardTitle } from "../../src/components/ui/card";
+import { Button } from "../../src/components/ui/button";
+import { Input } from "../../src/components/ui/input";
+import { Textarea } from "../../src/components/ui/textarea";
 import {
 	Select,
 	SelectContent,
 	SelectItem,
 	SelectTrigger,
 	SelectValue,
-} from "@/components/ui/select";
+} from "../../src/components/ui/select";
 import { Plus, Send, FileText } from "lucide-react";
 
 interface NewRequest {
@@ -137,7 +137,7 @@ const RequestSummaryPage: React.FC = () => {
 								</label>
 								<Select
 									value={newRequest.priority}
-									onValueChange={(value) =>
+									onValueChange={(value: string) =>
 										setNewRequest({
 											...newRequest,
 											priority: value as NewRequest["priority"],
@@ -179,7 +179,7 @@ const RequestSummaryPage: React.FC = () => {
 								<label className="text-sm font-medium mb-2 block">Unit *</label>
 								<Select
 									value={newRequest.unit}
-									onValueChange={(value) =>
+									onValueChange={(value: string) =>
 										setNewRequest({ ...newRequest, unit: value })
 									}
 								>
@@ -275,7 +275,6 @@ const RequestSummaryPage: React.FC = () => {
 					{/* Submit Button */}
 					<div className="flex justify-end space-x-4">
 						<Button
-							variant="outline"
 							onClick={() =>
 								setNewRequest({
 									itemName: "",

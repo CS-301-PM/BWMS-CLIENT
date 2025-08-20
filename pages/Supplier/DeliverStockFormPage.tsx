@@ -8,7 +8,7 @@ import {
 	CardHeader,
 	CardTitle,
 } from "../../src/components/ui/card";
-import { Button } from "@/components/ui/button";
+import { Button } from "../../src/components/ui/button";
 import { Input } from "../../src/components/ui/input";
 import { Textarea } from "../../src/components/ui/textarea";
 import {
@@ -217,7 +217,7 @@ const DeliverStockFormPage: React.FC = () => {
 								<label className="text-sm font-medium mb-2 block">Unit *</label>
 								<Select
 									value={deliveryRecord.unit}
-									onValueChange={(value) =>
+									onValueChange={(value: string) =>
 										setDeliveryRecord({ ...deliveryRecord, unit: value })
 									}
 								>
@@ -349,7 +349,7 @@ const DeliverStockFormPage: React.FC = () => {
 							</label>
 							<Select
 								value={deliveryRecord.deliveryLocation}
-								onValueChange={(value) =>
+								onValueChange={(value: string) =>
 									setDeliveryRecord({
 										...deliveryRecord,
 										deliveryLocation: value,
@@ -436,7 +436,7 @@ const DeliverStockFormPage: React.FC = () => {
 									id="file-upload"
 								/>
 								<Button
-									variant="outline"
+									
 									onClick={() =>
 										document.getElementById("file-upload")?.click()
 									}
@@ -457,8 +457,8 @@ const DeliverStockFormPage: React.FC = () => {
 											>
 												<span className="text-sm">{file.name}</span>
 												<Button
-													size="sm"
-													variant="outline"
+													className="text-red-600 hover:text-red-700"
+													
 													onClick={() => removeFile(index)}
 												>
 													Remove
@@ -474,7 +474,7 @@ const DeliverStockFormPage: React.FC = () => {
 					{/* Submit Button */}
 					<div className="flex justify-end space-x-4">
 						<Button
-							variant="outline"
+							
 							onClick={() => {
 								setDeliveryRecord({
 									itemName: "",

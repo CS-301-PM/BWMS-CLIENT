@@ -365,7 +365,7 @@ const MoveStockFormPage: React.FC = () => {
 										</label>
 										<Select
 											value={movement.toLocation}
-											onValueChange={(value) =>
+											onValueChange={(value :string) =>
 												setMovement({ ...movement, toLocation: value })
 											}
 										>
@@ -412,7 +412,7 @@ const MoveStockFormPage: React.FC = () => {
 										</label>
 										<Select
 											value={movement.priority}
-											onValueChange={(value) =>
+											onValueChange={(value: string) =>
 												setMovement({ ...movement, priority: value as any })
 											}
 										>
@@ -435,7 +435,7 @@ const MoveStockFormPage: React.FC = () => {
 									</label>
 									<Select
 										value={movement.reason}
-										onValueChange={(value) =>
+										onValueChange={(value: string) =>
 											setMovement({ ...movement, reason: value })
 										}
 									>
@@ -498,7 +498,7 @@ const MoveStockFormPage: React.FC = () => {
 
 								<div className="flex justify-end space-x-4">
 									<Button
-										variant="outline"
+									
 										onClick={() => {
 											setSelectedItem(null);
 											setMovement({

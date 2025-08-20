@@ -65,10 +65,10 @@ export default function ManagerDashboardHome() {
 			<div className="flex justify-between items-center">
 				<h1 className="text-2xl font-bold">Manager Dashboard</h1>
 				<div className="flex space-x-2">
-					<Button variant="outline" size="sm">
+					<Button  >
 						View Reports
 					</Button>
-					<Button size="sm">Quick Actions</Button>
+					<Button >Quick Actions</Button>
 				</div>
 			</div>
 
@@ -147,27 +147,21 @@ export default function ManagerDashboardHome() {
 									</div>
 									<div className="flex items-center space-x-2">
 										<Badge
-											variant={
-												request.priority === "High"
-													? "destructive"
-													: request.priority === "Medium"
-													? "default"
-													: "secondary"
-											}
+											variant="warning"
+											className="text-xs"
 										>
 											{request.priority}
 										</Badge>
 										<div className="flex space-x-1">
 											<Button
-												size="sm"
-												variant="outline"
+												
+												
 												className="text-green-600 hover:text-green-700 bg-transparent"
 											>
 												<CheckCircle className="h-4 w-4" />
 											</Button>
 											<Button
-												size="sm"
-												variant="outline"
+												
 												className="text-red-600 hover:text-red-700 bg-transparent"
 											>
 												<XCircle className="h-4 w-4" />

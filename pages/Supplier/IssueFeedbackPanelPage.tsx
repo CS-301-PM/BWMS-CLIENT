@@ -328,8 +328,8 @@ const IssueFeedbackPanelPage: React.FC = () => {
 										</td>
 										<td className="p-3">
 											<Button
-												size="sm"
-												variant="outline"
+												
+												
 												onClick={() => {
 													setSelectedDelivery(delivery);
 													setIsViewDialogOpen(true);
@@ -472,7 +472,7 @@ const IssueFeedbackPanelPage: React.FC = () => {
 
 							<div className="flex justify-end">
 								<Button
-									variant="outline"
+									
 									onClick={() => setIsViewDialogOpen(false)}
 								>
 									Close

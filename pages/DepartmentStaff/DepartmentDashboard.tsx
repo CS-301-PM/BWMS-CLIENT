@@ -2,9 +2,9 @@
 
 import type React from "react";
 import { useState } from "react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "../../src/components/ui/card";
+import { Badge } from "../../src/components/ui/badge";
+import { Button } from "../../src/components/ui/button";
 import {
 	FileText,
 	Clock,
@@ -199,21 +199,18 @@ const DepartmentDashboard: React.FC = () => {
 				<CardContent>
 					<div className="grid grid-cols-1 md:grid-cols-3 gap-4">
 						<Button
-							variant="outline"
 							className="h-20 flex flex-col items-center justify-center space-y-2 bg-transparent"
 						>
 							<Plus className="h-6 w-6" />
 							<span>Submit New Request</span>
 						</Button>
 						<Button
-							variant="outline"
 							className="h-20 flex flex-col items-center justify-center space-y-2 bg-transparent"
 						>
 							<Clock className="h-6 w-6" />
 							<span>View Pending Requests</span>
 						</Button>
 						<Button
-							variant="outline"
 							className="h-20 flex flex-col items-center justify-center space-y-2 bg-transparent"
 						>
 							<TrendingUp className="h-6 w-6" />

@@ -9,7 +9,7 @@ import {
 	CardTitle,
 } from "../../src/components/ui/card";
 import { Badge } from "../../src/components/ui/badge";
-import { Button } from "@/components/ui/button";
+import { Button } from "../../src/components/ui/button";
 import {
 	Truck,
 	Package,

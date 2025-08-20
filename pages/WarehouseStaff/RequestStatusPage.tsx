@@ -372,8 +372,8 @@ const RequestStatusPage: React.FC = () => {
 										<td className="p-3">
 											<div className="flex items-center space-x-2">
 												<Button
-													size="sm"
-													variant="outline"
+													//size="sm"
+													
 													onClick={() => {
 														setSelectedRequest(request);
 														setIsViewDialogOpen(true);
@@ -383,7 +383,7 @@ const RequestStatusPage: React.FC = () => {
 												</Button>
 												{request.status === "approved" && (
 													<Button
-														size="sm"
+													
 														className="bg-yellow-600 hover:bg-yellow-700 text-white"
 														onClick={() =>
 															handleUpdateStatus(request.id, "in-preparation")
@@ -394,7 +394,7 @@ const RequestStatusPage: React.FC = () => {
 												)}
 												{request.status === "in-preparation" && (
 													<Button
-														size="sm"
+														//"
 														className="bg-green-600 hover:bg-green-700 text-white"
 														onClick={() =>
 															handleUpdateStatus(request.id, "ready-for-pickup")
@@ -405,7 +405,7 @@ const RequestStatusPage: React.FC = () => {
 												)}
 												{request.status === "ready-for-pickup" && (
 													<Button
-														size="sm"
+														//size="sm"
 														className="bg-gray-600 hover:bg-gray-700 text-white"
 														onClick={() =>
 															handleUpdateStatus(request.id, "completed")
@@ -550,7 +550,7 @@ const RequestStatusPage: React.FC = () => {
 
 							<div className="flex justify-end space-x-2">
 								<Button
-									variant="outline"
+									
 									onClick={() => setIsViewDialogOpen(false)}
 								>
 									Close

@@ -354,7 +354,7 @@ const DeliveryOversight: React.FC = () => {
 											<div className="flex items-center space-x-2">
 												{delivery.status === "in-transit" && (
 													<Button
-														size="sm"
+														//size="sm"
 														className="bg-green-600 hover:bg-green-700 text-white"
 														onClick={() =>
 															handleUpdateDeliveryStatus(
@@ -369,7 +369,7 @@ const DeliveryOversight: React.FC = () => {
 												)}
 												{delivery.status === "pending" && (
 													<Button
-														size="sm"
+														//size="sm"
 														className="bg-blue-600 hover:bg-blue-700 text-white"
 														onClick={() =>
 															handleUpdateDeliveryStatus(
