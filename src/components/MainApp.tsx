@@ -35,8 +35,8 @@ import StockReceiving from "../../pages/WarehouseStaff/StockReceiving";
 import { useUserContext } from "../../hooks/UserContextHook";
 import { UserRole } from "types/auth";
 
-type AdminPage = "dashboard" | "users" | "settings" | "blockchain";
-type ManagerPage = "dashboard" | "requests" | "stock" | "deliveries";
+type AdminPage = "dashboard" | "users" | "blockchain";
+type ManagerPage = "dashboard" | "users" | "stocks" | "deliveries" | "logs";
 type DepartmentStaffPage = "dashboard" | "history" | "summary";
 type SupplierPage = "dashboard" | "deliveries" | "feedback";
 type WarehouseStaffPage =
@@ -183,18 +183,18 @@ export default function MainApp() {
                 Dashboard
               </Button>
               <Button
-                variant={managerActivePage === "requests" ? "default" : "ghost"}
+                variant={managerActivePage === "users" ? "default" : "ghost"}
                 className="w-full justify-start"
-                onClick={() => setManagerActivePage("requests")}
+                onClick={() => setManagerActivePage("users")}
               >
-                Request Approval
+                User Management
               </Button>
               <Button
-                variant={managerActivePage === "stock" ? "default" : "ghost"}
+                variant={managerActivePage === "stocks" ? "default" : "ghost"}
                 className="w-full justify-start"
-                onClick={() => setManagerActivePage("stock")}
+                onClick={() => setManagerActivePage("stocks")}
               >
-                Stock Overview
+                Stock Management
               </Button>
               <Button
                 variant={
@@ -203,7 +203,15 @@ export default function MainApp() {
                 className="w-full justify-start"
                 onClick={() => setManagerActivePage("deliveries")}
               >
-                Delivery Oversight
+                Deliveries
+              </Button>
+
+              <Button
+                variant={managerActivePage === "logs" ? "default" : "ghost"}
+                className="w-full justify-start"
+                onClick={() => setManagerActivePage("logs")}
+              >
+                Blockchain logs
               </Button>
             </nav>
           </div>
@@ -211,9 +219,10 @@ export default function MainApp() {
           {/* Main Content */}
           <div className="flex-1">
             {managerActivePage === "dashboard" && <ManagerDashboardHome />}
-            {managerActivePage === "requests" && <RequestApproval />}
-            {managerActivePage === "stock" && <StockOverview />}
+            {managerActivePage === "users" && <UserManagement />}
+            {managerActivePage === "stocks" && <StockOverview />}
             {managerActivePage === "deliveries" && <DeliveryOversight />}
+            {managerActivePage === "logs" && <BlockchainLogs />}
           </div>
         </div>
       </div>

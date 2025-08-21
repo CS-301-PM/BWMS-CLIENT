@@ -11,10 +11,10 @@ import {
   Pie,
   Cell,
 } from "recharts";
-import { Bell, TrendingUp, Users, Package, Activity } from "lucide-react";
-import { useOverviewContext } from "../../hooks/useOverviewContext";
+import { TrendingUp, Users, Package, Activity } from "lucide-react";
 import { useBlockchainContext } from "../../hooks/useBlockchainContextHook";
 import { useEffect } from "react";
+import { useStockContext } from "../../hooks/useStockContext";
 
 // const quickStatsData = [
 //   {
@@ -59,7 +59,8 @@ import { useEffect } from "react";
 // ];
 
 export default function AdminDashboardHome() {
-  const { approved, declined, inProcess, notifications } = useOverviewContext();
+  const { state } = useStockContext();
+  const { approved, declined, pending } = state;
   const { logs, getLogs } = useBlockchainContext();
 
   useEffect(() => {
@@ -67,16 +68,20 @@ export default function AdminDashboardHome() {
   }, []);
 
   const contractStageData = [
-    { name: "Approved", value: approved, color: "#22c55e" },
-    { name: "Declined", value: declined, color: "#ef4444" },
-    { name: "In Process", value: inProcess, color: "#f59e0b" },
-    { name: "Informed", value: approved + inProcess, color: "#3b82f6" },
+    { name: "Approved", value: approved.length, color: "#22c55e" },
+    { name: "Declined", value: declined.length, color: "#ef4444" },
+    { name: "In Process", value: pending.length, color: "#f59e0b" },
+    {
+      name: "Informed",
+      value: approved.length + pending.length,
+      color: "#3b82f6",
+    },
   ];
 
   const contractExpiringData = [
-    { name: "Active", value: approved, color: "#22c55e" },
-    { name: "Expiring Soon", value: inProcess, color: "#f59e0b" },
-    { name: "Expired", value: declined, color: "#ef4444" },
+    { name: "Active", value: approved.length, color: "#22c55e" },
+    { name: "Expiring Soon", value: pending.length, color: "#f59e0b" },
+    { name: "Expired", value: declined.length, color: "#ef4444" },
   ];
 
   return (
@@ -89,7 +94,9 @@ export default function AdminDashboardHome() {
             <TrendingUp className="h-4 w-4 text-green-600" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold text-green-600">{approved}</div>
+            <div className="text-2xl font-bold text-green-600">
+              {approved.length}
+            </div>
           </CardContent>
         </Card>
 
@@ -99,7 +106,9 @@ export default function AdminDashboardHome() {
             <Users className="h-4 w-4 text-red-600" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold text-red-600">{declined}</div>
+            <div className="text-2xl font-bold text-red-600">
+              {declined.length}
+            </div>
           </CardContent>
         </Card>
 
@@ -109,21 +118,21 @@ export default function AdminDashboardHome() {
             <Package className="h-4 w-4 text-yellow-600" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold text-yellow-600">{inProcess}</div>
+            <div className="text-2xl font-bold text-yellow-600">
+              {pending.length}
+            </div>
           </CardContent>
         </Card>
-
+        {/* 
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Notifications</CardTitle>
             <Bell className="h-4 w-4 text-blue-600" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold text-blue-600">
-              {notifications.length}
-            </div>
+            <div className="text-2xl font-bold text-blue-600">{0}</div>
           </CardContent>
-        </Card>
+        </Card> */}
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
@@ -172,7 +181,7 @@ export default function AdminDashboardHome() {
         </Card>
 
         {/* Notifications */}
-        <Card className="lg:col-span-1">
+        {/* <Card className="lg:col-span-1">
           <CardHeader>
             <CardTitle>Notifications</CardTitle>
           </CardHeader>
@@ -189,53 +198,10 @@ export default function AdminDashboardHome() {
               ))}
             </div>
           </CardContent>
-        </Card>
+        </Card> */}
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        {/* Quick Stats */}
-        {/* <Card>
-          <CardHeader>
-            <CardTitle>Quick Stats (View)</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="overflow-x-auto">
-              <table className="w-full">
-                <thead>
-                  <tr className="border-b">
-                    <th className="text-left p-2">Serial #</th>
-                    <th className="text-left p-2">Item Name</th>
-                    <th className="text-left p-2">Value</th>
-                    <th className="text-left p-2">Status</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {quickStatsData.map((item, index) => (
-                    <tr key={index} className="border-b">
-                      <td className="p-2">{item.serialNo}</td>
-                      <td className="p-2">{item.itemName}</td>
-                      <td className="p-2">{item.value}</td>
-                      <td className="p-2">
-                        <span
-                          className={`px-2 py-1 rounded text-xs ${
-                            item.status === "Approved"
-                              ? "bg-green-100 text-green-800"
-                              : item.status === "In Progress"
-                              ? "bg-yellow-100 text-yellow-800"
-                              : "bg-red-100 text-red-800"
-                          }`}
-                        >
-                          {item.status}
-                        </span>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </CardContent>
-        </Card> */}
-
         {/* Blockchain/Ledger Log */}
         <Card>
           <CardHeader>

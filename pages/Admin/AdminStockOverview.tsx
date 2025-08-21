@@ -11,7 +11,7 @@ import { Button } from "../../src/components/ui/button";
 import { Input } from "../../src/components/ui/input";
 import { Badge } from "../../src/components/ui/badge";
 import { Search, Filter, Download, Eye, Edit, Trash2 } from "lucide-react";
-import { useOverviewContext } from "../../hooks/useOverviewContext";
+import { useStockContext } from "../../hooks/useStockContext";
 
 const stockData = [
   {
@@ -57,8 +57,8 @@ const stockData = [
 ];
 
 export default function AdminStockOverview() {
-  const { approved, declined, inProcess, notifications, isLoading, error } =
-    useOverviewContext();
+  const { state } = useStockContext();
+  const { approved, declined, pending, stocks } = state;
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All");
 

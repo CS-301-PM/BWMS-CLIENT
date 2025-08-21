@@ -12,10 +12,8 @@ import Registration from "./components/auth/UserRegistration";
 import "./App.css";
 
 import { useUserContext } from "../hooks/UserContextHook";
-import { StockManagementProvider } from "../contexts/StockManagementContext";
-import { RequestManagementProvider } from "../contexts/RequestContext";
 import { BlockchainContextProvider } from "../contexts/BlockchainContext";
-import { OverviewContextProvider } from "../contexts/OverviewContext";
+import { StockContextProvider } from "../contexts/StockContext";
 
 function App() {
   const { user } = useUserContext();
@@ -56,15 +54,11 @@ function App() {
             hasAdmin ? (
               isLoggedIn ? (
                 <div className="min-h-screen bg-gray-50">
-                  <StockManagementProvider>
-                    <RequestManagementProvider>
-                      <BlockchainContextProvider>
-                        <OverviewContextProvider>
-                          <MainApp />
-                        </OverviewContextProvider>
-                      </BlockchainContextProvider>
-                    </RequestManagementProvider>
-                  </StockManagementProvider>
+                  <BlockchainContextProvider>
+                    <StockContextProvider>
+                      <MainApp />
+                    </StockContextProvider>
+                  </BlockchainContextProvider>
                 </div>
               ) : (
                 <Navigate to="/login" replace />
