@@ -1,6 +1,6 @@
 import "./Header.css";
 import { RiMenuFold2Fill } from "react-icons/ri";
-import { IoNotificationsCircleSharp } from "react-icons/io5";
+// import { IoNotificationsCircleSharp } from "react-icons/io5";
 import { MdAdminPanelSettings } from "react-icons/md";
 import { FaUserTie } from "react-icons/fa";
 import { BsPersonFillGear } from "react-icons/bs";
@@ -24,19 +24,19 @@ function Header() {
             data-bs-target="#offcanvasExample"
             aria-controls="offcanvasExample"
           />
-          <NavLink to="#">CENTRAL-STORES</NavLink>
+          <h1>CENTRAL-STORES</h1>
         </div>
         <div className="headerRight">
-          <IoNotificationsCircleSharp className="headerIcon" />
-          {role === "admin" && <MdAdminPanelSettings className="headerIcon" />}
-          {role === "manager" && <FaUserTie className="headerIcon" />}
-          {role === "warehouse_staff" && (
+          {/* <IoNotificationsCircleSharp className="headerIcon" /> */}
+          {role === "ADMIN" && <MdAdminPanelSettings className="headerIcon" />}
+          {role === "STORES_MANAGER" && <FaUserTie className="headerIcon" />}
+          {role === "DEPARTMENT_DEAN" && (
             <BsPersonFillGear className="headerIcon" />
           )}
-          {role === "department_staff" && (
+          {role === "PROCUREMENT_OFFICER" && (
             <BsPersonFillCheck className="headerIcon" />
           )}
-          {role === "supplier" && <FaClipboardUser className="headerIcon" />}
+          {role === "CFO" && <FaClipboardUser className="headerIcon" />}
         </div>
       </div>
     </div>

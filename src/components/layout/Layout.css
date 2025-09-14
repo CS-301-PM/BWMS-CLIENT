@@ -17,13 +17,13 @@
     top: 0;
     left: 0;
     right: 0;
-    height: 4rem;
+    height: 6rem;
     display: grid;
   }
   #render {
     left: 0;
     right: 0;
-    top: 4rem;
+    top: 6rem;
     bottom: 0;
   }
   #sideBar {
@@ -37,20 +37,20 @@
     top: 0;
     right: 0;
     left: 0;
-    height: 4rem;
+    height: 6rem;
     display: grid;
   }
   #render {
-    top: 4em;
+    top: 6em;
     bottom: 0;
-    left: 4rem;
+    left: 6rem;
     right: 0rem;
   }
   #sideBar {
-    top: 4rem;
+    top: 6rem;
     left: 0;
     bottom: 0;
-    width: 4rem;
+    width: 6rem;
     display: grid;
     grid-template-rows: 1fr 30%;
   }
@@ -62,18 +62,18 @@
     top: 0;
     left: 0;
     right: 0;
-    height: 4rem;
+    height: 6rem;
     display: grid;
   }
   #render {
-    top: 4rem;
+    top: 6rem;
     bottom: 0;
-    left: 11rem;
+    left: 13rem;
     right: 0rem;
   }
   #sideBar {
-    top: 4rem;
+    top: 6rem;
     bottom: 0;
-    width: 11rem;
+    width: 13rem;
   }
 }

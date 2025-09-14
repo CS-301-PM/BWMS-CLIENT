@@ -21,7 +21,13 @@ function NavList() {
         routes.map((route, index) => {
           const { to, label: name, icon } = route;
           return (
-            <NavLink key={index} to={to} className="NavLink m-2">
+            <NavLink
+              key={index}
+              to={to}
+              className={({ isActive }) =>
+                `NavLink m-2 ${isActive ? "bg-primary" : "bg-transparent"}`
+              }
+            >
               <div className="NavLinkIcon">{icon}</div>
               <div className="NavLinkText">
                 <span>{name}</span>

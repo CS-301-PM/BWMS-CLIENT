@@ -1,3 +1,25 @@
+.NavLink {
+  color: black;
+  font-weight: bolder;
+  text-decoration: none;
+  font-size: 1rem;
+  border: 1px solid rgba(59, 59, 59, 0.114);
+  padding: 4pt;
+  border-radius: 4pt;
+  /* background: rgba(209, 76, 32, 0.36); */
+}
+
+.NavLink:hover {
+  background-color: rgba(206, 202, 202, 0.73);
+}
+
+.NavLinkIcon {
+  color: rgb(72, 72, 72);
+}
+.NavLinkText {
+  color: rgba(61, 62, 63, 0.847);
+}
+
 /* Mobile Devices (portrait and landscape) up to 767px */
 @media only screen and (max-width: 567px) {
   .navList {
@@ -41,6 +63,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    height: 4rem;
   }
 
   .NavLinkIcon {

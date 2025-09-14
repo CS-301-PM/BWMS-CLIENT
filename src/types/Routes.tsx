@@ -1,58 +1,81 @@
 // dashboardRoutes.ts
-import { MdDashboard, MdPeople, MdInventory, MdListAlt } from "react-icons/md";
 import {
-  FaBoxes,
-  FaCheckCircle,
-  FaTruck,
-  FaHistory,
-  FaChartLine,
-  FaExclamationTriangle,
+  MdDashboard,
+  MdPeople,
+  MdInventory,
+  MdListAlt,
+  MdEditNotifications,
+} from "react-icons/md";
+import { Route } from "react-router-dom";
+import {
+  FaMoneyCheckAlt,
+  FaPlusSquare,
+  FaUserPlus,
+  FaUsers,
 } from "react-icons/fa";
-import { IoIosSync } from "react-icons/io";
-import {
-  // BiEditAlt,
-BiMailSend
-} from "react-icons/bi";
+import { TbLogs } from "react-icons/tb";
+
 import { Role } from "./User";
 
 export type Route = {
   to: string;
   value: string;
   label: string;
-  icon: React.ReactNode; // <-- React component, not a string
+  icon: React.ReactNode;
 };
-
-// type Role =
-//   | "admin"
-//   | "manager"
-//   | "warehouse_staff"
-//   | "department_staff"
-//   | "supplier";
 
 export type DashboardRoutes = {
   [key in Role]: Route[];
 };
 
+// export const commonMenus = {
+//   users: {
+//     to: "/stores_manager/users",
+//     value: "users",
+//     label: "Users",
+//     icon: <FaUsers />,
+//   },
+//   newUser: {
+//     to: "/stores_manager/new_user",
+//     value: "new_user",
+//     label: "New user",
+//     icon: <FaUserPlus />,
+//   },
+//   stocks: {
+//     to: "/central_store/stocks",
+//     value: "stocks",
+//     label: "Stocks",
+//     icon: <MdInventory />,
+//   },
+//   requests: {
+//     to: "/central_store/requests",
+//     value: "requests",
+//     label: "Requests",
+//     icon: <MdEditNotifications />,
+//   },
+// };
+
+// 🔹 Dashboard menus
 export const dashboardRoutes: DashboardRoutes = {
-  admin: [
-    { to: "/admin", value: "home", label: "Dashboard", icon: <MdDashboard /> },
+  ADMIN: [
     { to: "/admin/users", value: "users", label: "Users", icon: <MdPeople /> },
     {
-      to: "/admin/stocks",
-      value: "stocks",
-      label: "Stocks",
-      icon: <MdInventory />,
+      to: "/admin/new_user",
+      value: "new_user",
+      label: "New user",
+      icon: <FaUserPlus />,
     },
     {
-      to: "/admin/activity_logs",
-      value: "activity_logs",
-      label: "Activity Logs",
-      icon: <MdListAlt />,
+      to: "/admin/logs",
+      value: "logs",
+      label: "All logs",
+      icon: <TbLogs />,
     },
   ],
-  manager: [
+
+  STORES_MANAGER: [
     {
-      to: "/manager",
+      to: "/manager/dashboard",
       value: "home",
       label: "Dashboard",
       icon: <MdDashboard />,
@@ -61,13 +84,13 @@ export const dashboardRoutes: DashboardRoutes = {
       to: "/manager/users",
       value: "users",
       label: "Users",
-      icon: <MdPeople />,
+      icon: <FaUsers />,
     },
     {
-      to: "/manager/stock_management",
-      value: "stock_management",
-      label: "Stock Management",
-      icon: <FaBoxes />,
+      to: "/manager/new_user",
+      value: "new_user",
+      label: "New user",
+      icon: <FaUserPlus />,
     },
     {
       to: "/manager/stocks",
@@ -78,86 +101,71 @@ export const dashboardRoutes: DashboardRoutes = {
     {
       to: "/manager/requests",
       value: "requests",
-      label: "Request Approvals",
-      icon: <FaCheckCircle />,
+      label: "Requests",
+      icon: <MdEditNotifications />,
     },
     {
-      to: "/manager/deliveries",
-      value: "deliveries",
-      label: "Delivery Oversight",
-      icon: <FaTruck />,
+      to: "/manager/logs",
+      value: "logs",
+      label: "All logs",
+      icon: <TbLogs />,
     },
+  ],
+
+  DEPARTMENT_DEAN: [
     {
-      to: "/manager/activity_logs",
-      value: "activity_logs",
-      label: "Activity Logs",
+      to: "/department/requests",
+      value: "home",
+      label: "Requests",
       icon: <MdListAlt />,
     },
-  ],
-  warehouse_staff: [
     {
-      to: "/warehouse",
-      value: "home",
-      label: "Dashboard",
-      icon: <MdDashboard />,
+      to: "/department/new_request",
+      value: "new_request",
+      label: "New Request",
+      icon: <FaPlusSquare />,
     },
     {
-      to: "/warehouse/stock_movement",
-      value: "stock_movement",
-      label: "Stock Movement",
-      icon: <IoIosSync />,
-    },
-    // {
-    //   to: "/warehouse/update_stock",
-    //   value: "update_stock",
-    //   label: "Update Stock",
-    //   icon: <BiEditAlt />,
-    // },
-    {
-      to: "/warehouse/request_status",
-      value: "request_status",
-      label: "Request Status",
-      icon: <BiMailSend />,
+      to: "/department/logs",
+      value: "logs",
+      label: "All logs",
+      icon: <TbLogs />,
     },
   ],
-  department_staff: [
+
+  PROCUREMENT_OFFICER: [
     {
-      to: "/department",
-      value: "home",
-      label: "Dashboard",
-      icon: <MdDashboard />,
+      to: "/procurement/requests",
+      value: "requests",
+      label: "Requests",
+      icon: <MdEditNotifications />,
     },
     {
-      to: "/department/request_history",
-      value: "request_history",
-      label: "Request History",
-      icon: <FaHistory />,
+      to: "/procurement/stocks",
+      value: "stocks",
+      label: "Stocks",
+      icon: <MdInventory />,
     },
     {
-      to: "/department/request_summary",
-      value: "request_summary",
-      label: "Status Summary",
-      icon: <FaChartLine />,
+      to: "/procurement/logs",
+      value: "logs",
+      label: "All logs",
+      icon: <TbLogs />,
     },
   ],
-  supplier: [
+
+  CFO: [
     {
-      to: "/supplier",
-      value: "home",
-      label: "Dashboard",
-      icon: <MdDashboard />,
+      to: "/cfo/funds",
+      value: "funds",
+      label: "Funds",
+      icon: <FaMoneyCheckAlt />,
     },
     {
-      to: "/supplier/deliver_stock",
-      value: "deliver_stock",
-      label: "Deliver New Stock",
-      icon: <FaBoxes />,
-    },
-    {
-      to: "/supplier/feedback",
-      value: "feedback",
-      label: "Feedback & Alerts",
-      icon: <FaExclamationTriangle />,
+      to: "/cfo/logs",
+      value: "logs",
+      label: "All logs",
+      icon: <TbLogs />,
     },
   ],
 };

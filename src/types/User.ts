@@ -1,17 +1,23 @@
 export type Role =
-  | "admin"
-  | "manager"
-  | "warehouse_staff"
-  | "department_staff"
-  | "supplier";
+  | "STORES_MANAGER"
+  | "PROCUREMENT_OFFICER"
+  | "DEPARTMENT_DEAN"
+  | "CFO"
+  | "ADMIN";
+
+export const roleOptions = [
+  { value: "All", label: "All Roles" },
+  { value: "admin", label: "Admin" },
+  { value: "manager", label: "Manager" },
+  { value: "storekeeper", label: "Storekeeper" },
+  { value: "department_hod", label: "Department HOD" },
+];
 
 export type User = {
-  // data: {
-  id: string;
-  fullname: string;
-  socialSecurityNumber: string;
+  id?: string;
+  fullname?: string;
+  employeeNumber?: string;
   role: Role;
-  // };
 };
 
 export type UserState = {
@@ -19,7 +25,7 @@ export type UserState = {
 };
 
 export type UserSignIn = {
-  socialSecurityNumber: string;
+  employeeNumber: string;
   password: string;
 };
 export type UserSignUp = {} & UserSignIn & {
@@ -28,6 +34,15 @@ export type UserSignUp = {} & UserSignIn & {
     role: Role;
     confirm: string;
   };
+
+export type UserRegistration = {
+  firstname?: string;
+  lastname?: string;
+  employeeId?: string;
+  department?: string;
+  role: Role;
+  password?: string;
+};
 
 type ErrorBody = {
   message: string;
@@ -40,7 +55,7 @@ export type ErrorResponse = {
     [
       key:
         | string
-        | "socialSecurityNumber"
+        | "employeeNumber"
         | "fullname"
         | "phone"
         | "role"
@@ -50,8 +65,17 @@ export type ErrorResponse = {
   };
 };
 
-// export const userObject: User = {
-//   data: {
-//     role: "supplier",
-//   },
-// };
+export const departmentOptions = [
+  { value: "finance", label: "Finance" },
+  { value: "hr", label: "Human Resources" },
+  { value: "it", label: "Information Technology" },
+  { value: "central_store", label: "Central Store" },
+  { value: "procurement", label: "Procurement" },
+  { value: "library", label: "Library" },
+  { value: "laboratory", label: "Laboratory" },
+  { value: "maintenance", label: "Maintenance" },
+  { value: "security", label: "Security" },
+  { value: "transport", label: "Transport" },
+  { value: "research", label: "Research & Development" },
+  { value: "administration", label: "Administration" },
+];
